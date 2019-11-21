@@ -1,7 +1,7 @@
 #include <string.h>
 
 #include "external/Unity/src/unity.h"
-#include "S01_C01/convertHexToBase64.h"
+#include "S01_C01/ConvertHexToBase64.h"
 
 
 void setUp(void) { }
