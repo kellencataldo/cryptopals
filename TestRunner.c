@@ -15,8 +15,8 @@ void test_convertHexToBase64(void) {
     const char* b64String_1 = convertHexToBase64(hexString_1, strlen(hexString_1));
     TEST_ASSERT_EQUAL_STRING(expectedB64String_1, b64String_1);
 
-    const char* hexString_2 = "0123456789ABDCEF";
-    const char* expectedB64String_2 = "ASNFZ4mr3O8=";
+    const char* hexString_2 = "0123456789abcdef";
+    const char* expectedB64String_2 = "ASNFZ4mrze8=";
     const char* b64String_2 = convertHexToBase64(hexString_2, strlen(hexString_2));
     TEST_ASSERT_EQUAL_STRING(expectedB64String_2, b64String_2);
 
