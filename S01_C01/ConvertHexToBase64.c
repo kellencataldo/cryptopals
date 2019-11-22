@@ -66,7 +66,7 @@ void translateChunk(const char* hexString, char* b64String, const int32_t paddin
 
 
 char* convertHexToBase64(const char* hexString, const size_t hexStringLength) {
-	if(hexString == NULL || hexStringLength == 0 || hexStringLength % 2 == 1) {
+    if(hexString == NULL || hexStringLength == 0 || hexStringLength % 2 == 1) {
 		// @todo: error print here? idk.
         return NULL;
     }
