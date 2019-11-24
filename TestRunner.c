@@ -2,6 +2,7 @@
 
 #include "external/Unity/src/unity.h"
 #include "S01_C01/ConvertHexToBase64.h"
+#include "S01_C02/FixedXOR.h"
 
 
 void setUp(void) { }
@@ -26,8 +27,40 @@ void test_convertHexToBase64(void) {
     TEST_ASSERT_EQUAL_STRING(expectedB64String_3, b64String_3);
 }
 
+void test_fixedXOR(void) {
+
+    char* copyString_1 = "1c0111001f010100061a024b53535009181c";
+    char* targetString_1 = (char*) calloc(strlen(copyString_1), sizeof(char));
+    strcpy(targetString_1, copyString_1);
+
+    const char* xorString_1 = "686974207468652062756c6c277320657965";
+    const char* expectedString_1 = "746865206b696420646f6e277420706c6179";
+    fixedXOR(targetString_1, xorString_1, strlen(targetString_1));
+    TEST_ASSERT_EQUAL_STRING(expectedString_1, targetString_1 );
+
+    char* copyString_2 = "aa";
+    char* targetString_2 = (char*) calloc(strlen(copyString_2), sizeof(char));
+    strcpy(targetString_2, copyString_2);
+
+    const char* xorString_2 = "bb";
+    const char* expectedString_2 = "11";
+    fixedXOR(targetString_2, xorString_2, strlen(targetString_2));
+    TEST_ASSERT_EQUAL_STRING(expectedString_2, targetString_2 );
+
+    char* copyString_3 = "123456789abcdef";
+    char* targetString_3 = (char*) calloc(strlen(copyString_3), sizeof(char));
+    strcpy(targetString_3, copyString_3);
+
+    const char* xorString_3 = "fffffffffffffff";
+    const char* expectedString_3 = "edcba9876543210";
+    fixedXOR(targetString_3, xorString_3, strlen(targetString_3));
+    TEST_ASSERT_EQUAL_STRING(expectedString_3, targetString_3 );
+
+}
+
 int main(const int nargc, const char* args[]) {
     UNITY_BEGIN();
     RUN_TEST(test_convertHexToBase64);
+    RUN_TEST(test_fixedXOR);
     return UNITY_END();
 }

@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "ConvertHexToBase64.h"
+#include "Hex.h"
 
 
 static const char base64[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
@@ -15,14 +16,6 @@ static const char base64[] = { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H',
                                '4', '5', '6', '7', '8', '9', '+', '/' };
 
 static const int32_t remainderMap[] = { 0, 2, 1 };
-
-char asciiToHex(const char ascii) {
-    if ('0' <= ascii && '9' >= ascii) {
-        return ascii - '0';
-    }
-    
-    return (ascii - 'a') + 10;
-}
 
 
 void translateChunk(const char* hexString, char* b64String, const int32_t paddingChars) {
@@ -53,7 +46,7 @@ void translateChunk(const char* hexString, char* b64String, const int32_t paddin
     size_t bitShift = paddingChars * 2;
     uint32_t chunk = 0;
     for (int32_t hexIndex = ((3 - paddingChars) * 2) - 1; 0 <= hexIndex; hexIndex--, bitShift+=4) {
-        chunk |= asciiToHex(hexString[hexIndex]) << bitShift;
+        chunk |= asciiToHex(hexString[hexIndex]) << bitShift; // hex.h
     }
 
     bitShift = 0;
