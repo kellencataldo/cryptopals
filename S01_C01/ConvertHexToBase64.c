@@ -68,6 +68,9 @@ char* convertHexToBase64(const char* hexString, const size_t hexStringLength) {
     const int32_t paddingChars = remainderMap[asciiChars % 3];
     const size_t b64StringLength = ((asciiChars + paddingChars) * 4) / 3;
     char* b64String = (char*) calloc(b64StringLength + 1, sizeof(char));
+    if(b64String == NULL) {
+        return NULL;
+    }
     
     size_t hexIndex = 0;
     size_t b64Index = 0;

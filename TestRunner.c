@@ -3,6 +3,7 @@
 #include "external/Unity/src/unity.h"
 #include "S01_C01/ConvertHexToBase64.h"
 #include "S01_C02/FixedXOR.h"
+#include "S01_C03/SingleByteXorCipher.h"
 
 
 void setUp(void) { }
@@ -58,9 +59,15 @@ void test_fixedXOR(void) {
 
 }
 
+void test_singleByteXorCipher(void) {
+    singleByteXorCipher("aa", 2);
+    TEST_ASSERT_EQUAL(1,1);
+}
+
 int main(const int nargc, const char* args[]) {
     UNITY_BEGIN();
     RUN_TEST(test_convertHexToBase64);
     RUN_TEST(test_fixedXOR);
+    RUN_TEST(test_singleByteXorCipher);
     return UNITY_END();
 }

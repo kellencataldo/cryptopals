@@ -15,6 +15,7 @@ add_executable(testrunner
     TestRunner.c
     ${CMAKE_SOURCE_DIR}/S01_C01/ConvertHexToBase64.c
     ${CMAKE_SOURCE_DIR}/S01_C02/FixedXOR.c
+    ${CMAKE_SOURCE_DIR}/S01_C03/SingleByteXorCipher.c
     ${CMAKE_SOURCE_DIR}/utilities/source/Hex.c
     )
 
